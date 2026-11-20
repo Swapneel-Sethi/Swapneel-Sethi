@@ -4,7 +4,7 @@
 
 <br/>
 
-<img src="assets/profile-card.svg" alt="Swapneel Sethi, @Swapneel-Sethi — full-stack developer building AI-assisted products. 8 public repositories, 16 contributions in the last 12 months, 2 followers, on GitHub since 2025. Stack: TypeScript, JavaScript, Python, Node.js, Next.js, React." width="100%">
+<img src="assets/profile-card.svg" alt="Swapneel Sethi, @Swapneel-Sethi — full-stack developer building AI-assisted products. Stack: TypeScript, JavaScript, Python, Node.js, Next.js, React." width="100%">
 
 <br/>
 
@@ -116,14 +116,16 @@ A shingle-containment engine scores matches against a local corpus; a Node servi
 
 ## `04` · ACTIVITY
 
-**16 public contributions in the last 12 months.** The card above is generated from the GitHub API; the breakdown below is the same data, by month.
+<!--activity:start-->
+**19 public contributions in the last 12 months.** The card above is generated from the GitHub API; the breakdown below is the same data, by month.
 
 | Month | Active days | Contributions |
 | :--- | ---: | ---: |
 | Aug 2026 | 3 | 4 |
 | Sep 2026 | 2 | 3 |
-| Nov 2026 | 2 | 9 |
-| **Total** | **7** | **16** |
+| Nov 2026 | 2 | 12 |
+| **Total** | **7** | **19** |
+<!--activity:end-->
 
 <sub>Most of my commit history was authored under a local git identity that is not linked to this account, so GitHub's graph undercounts the real work. The repositories above are the honest record.</sub>
 
