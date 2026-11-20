@@ -116,7 +116,7 @@
     <rect x="245" y="212" width="189" height="62" rx="9" fill="#0a1016" stroke="#16202b"/>
     <rect x="245" y="212" width="2" height="62" rx="1" fill="#22d3ee" opacity="0.5"/>
     <text x="263" y="235" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="8.5" letter-spacing="1.5" fill="#54636f">CONTRIBUTIONS</text>
-    <text id="stat-contrib" x="263" y="261" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, Helvetica, Arial, sans-serif" font-size="21" font-weight="700" fill="#eaf1f8">16</text>
+    <text id="stat-contrib" x="263" y="261" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, Helvetica, Arial, sans-serif" font-size="21" font-weight="700" fill="#eaf1f8">15</text>
 
     <rect x="446" y="212" width="189" height="62" rx="9" fill="#0a1016" stroke="#16202b"/>
     <rect x="446" y="212" width="2" height="62" rx="1" fill="#7c5cff" opacity="0.5"/>
