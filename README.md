@@ -75,12 +75,12 @@ A shingle-containment engine scores matches against a local corpus; a Node servi
 <br/>
 
 **FreightPulse** — freight forecasting dashboard built for SIH 2026: forecasting, demurrage modelling, scenario optimization, AIS monitoring, and a live war room.
-`JavaScript` `Vite` `Chart.js`
-[Repository](https://github.com/Swapneel-Sethi/freightpulse-frontend)
+<br/>
+`JavaScript` `Vite` `Chart.js` &nbsp; [Repository](https://github.com/Swapneel-Sethi/freightpulse-frontend)
 
 **Freight Oracle** — the TypeScript counterpart: command dashboard, crisis war room, demurrage simulator, and fleet ballaster over real India coastline GeoJSON with deck.gl and a custom Three.js renderer.
-`TypeScript` `React` `deck.gl` `Three.js` `TanStack Query` `Recharts`
-[Repository](https://github.com/Swapneel-Sethi/freight-oracle-frontend)
+<br/>
+`TypeScript` `React` `deck.gl` `Three.js` `TanStack Query` `Recharts` &nbsp; [Repository](https://github.com/Swapneel-Sethi/freight-oracle-frontend)
 
 ---
 
