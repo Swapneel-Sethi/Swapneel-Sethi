@@ -1,4 +1,4 @@
-<div align="center">
+﻿<div align="center">
 
 <sub>`FULL-STACK DEVELOPER` &nbsp;·&nbsp; `AI-ASSISTED PRODUCTS` &nbsp;·&nbsp; `SHIPS DEPLOYED`</sub>
 
@@ -11,8 +11,8 @@
 I take hackathon briefs and real-world friction and turn them into deployed products — full-stack apps where AI does something load-bearing instead of decorative.
 
 [![GitHub](https://img.shields.io/badge/GitHub-Swapneel--Sethi-00ff9c?style=flat-square&labelColor=0a0f14&logo=github&logoColor=00ff9c)](https://github.com/Swapneel-Sethi)
-[![Projects](https://img.shields.io/badge/projects-6-22d3ee?style=flat-square&labelColor=0a0f14)](#projects)
-[![Live demos](https://img.shields.io/badge/live_demos-3-a855f7?style=flat-square&labelColor=0a0f14)](#projects)
+[![Projects](https://img.shields.io/badge/projects-6-22d3ee?style=flat-square&labelColor=0a0f14)](#02--projects)
+[![Live demos](https://img.shields.io/badge/live_demos-3-a855f7?style=flat-square&labelColor=0a0f14)](#02--projects)
 
 </div>
 
@@ -27,8 +27,6 @@ I take hackathon briefs and real-world friction and turn them into deployed prod
 **Data-dense interfaces.** Force graphs, deck.gl overlays, and Three.js scenes — interfaces that make complex systems legible instead of pretty.
 
 ---
-
-<a name="projects"></a>
 
 ## `02` · PROJECTS
 
@@ -157,6 +155,6 @@ working software > slides
 
 **HAVE A PROBLEM WORTH BUILDING?**
 
-[EXPLORE PROJECTS](#projects) &nbsp;·&nbsp; [OPEN GITHUB](https://github.com/Swapneel-Sethi)
+[EXPLORE PROJECTS](#02--projects) &nbsp;·&nbsp; [OPEN GITHUB](https://github.com/Swapneel-Sethi)
 
 </div>
