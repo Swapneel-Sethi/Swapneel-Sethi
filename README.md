@@ -1,73 +1,42 @@
 <div align="center">
 
-# Swapneel Sethi
+<sub>`FULL-STACK DEVELOPER` &nbsp;·&nbsp; `AI-ASSISTED PRODUCTS` &nbsp;·&nbsp; `SHIPS DEPLOYED`</sub>
 
-`FULL-STACK DEVELOPER` · `AI-ASSISTED PRODUCTS` · `SHIPS WORKING SOFTWARE`
+<br/>
+
+<img src="assets/profile-card.svg" alt="Swapneel Sethi, @Swapneel-Sethi — full-stack developer building AI-assisted products. 8 public repositories, 16 contributions in the last 12 months, 2 followers, on GitHub since 2025. Stack: TypeScript, JavaScript, Python, Node.js, Next.js, React." width="100%">
+
+<br/>
 
 I take hackathon briefs and real-world friction and turn them into deployed products — full-stack apps where AI does something load-bearing instead of decorative.
 
-<br/>
-
 [![GitHub](https://img.shields.io/badge/GitHub-Swapneel--Sethi-00ff9c?style=flat-square&labelColor=0a0f14&logo=github&logoColor=00ff9c)](https://github.com/Swapneel-Sethi)
-[![Repositories](https://img.shields.io/badge/repositories-7-22d3ee?style=flat-square&labelColor=0a0f14)](https://github.com/Swapneel-Sethi?tab=repositories)
+[![Projects](https://img.shields.io/badge/projects-6-22d3ee?style=flat-square&labelColor=0a0f14)](#projects)
 [![Live demos](https://img.shields.io/badge/live_demos-3-a855f7?style=flat-square&labelColor=0a0f14)](#projects)
-[![Since](https://img.shields.io/badge/on_github_since-2025-5c6b7a?style=flat-square&labelColor=0a0f14)](https://github.com/Swapneel-Sethi)
 
 </div>
 
-<br/>
+---
 
-<div align="center">
+## `01` · WHAT I BUILD
 
-<img src="assets/profile-card.svg" alt="Profile card for Swapneel Sethi: full-stack developer, 7 public repositories, 14 contributions in the last year, on GitHub since 2025. Stack: TypeScript, JavaScript, Python, Node.js, Next.js." width="100%">
+**Products that ship.** Every project below runs somewhere — a Vercel deployment, a Cloud Run container, or a static page you can open offline. Nothing here is a half-finished tutorial.
 
-</div>
+**Evidence-first AI.** AI that traces every claim back to a source and admits what it does not know, instead of producing a confident score.
 
-<br/>
-
-## `01` — STATUS
-
-```text
-┌────────────────────────────────────────────────────────────┐
-│  ● SYSTEM ONLINE                                           │
-│                                                            │
-│  CURRENTLY BUILDING                                        │
-│  > CareMesh — elder-first care coordination platform       │
-│                                                            │
-│  FOCUS                                                     │
-│  > full-stack products · applied AI · accessibility        │
-│                                                            │
-│  MODE                                                      │
-│  > building · learning · shipping                          │
-└────────────────────────────────────────────────────────────┘
-```
+**Data-dense interfaces.** Force graphs, deck.gl overlays, and Three.js scenes — interfaces that make complex systems legible instead of pretty.
 
 ---
 
-## `02` — STACK
+<a name="projects"></a>
 
-Only what actually appears in my repositories.
+## `02` · PROJECTS
 
-| Layer | What I use it for |
-| :--- | :--- |
-| **Languages** | TypeScript · JavaScript · Python · HTML · CSS |
-| **Frontend** | React · Next.js · Vite · Tailwind CSS · Chart.js · Recharts · Three.js / react-three-fiber · deck.gl · D3 |
-| **Backend** | Node.js · Next.js route handlers · zero-dependency Node services · Zod validation |
-| **AI / Data** | Google Vertex AI (Gemini) · PDF parsing (pdf-parse, unpdf) · evidence graphs · graph & force layouts (vis-network, 3d-force-graph) |
-| **Data & auth** | Supabase · Firebase (client + admin) |
-| **DevOps** | Docker · Google Cloud Run · Cloud Build · Vercel · GitHub Actions |
-
----
-
-## `03` — PROJECTS
-
-<br/>
-
-### 🧩 CareMesh — elder-first care coordination
+### CareMesh — elder-first care coordination `● ACTIVE`
 
 A care circle for the people who actually coordinate care: medication scheduling, adherence tracking, appointments, missed-dose escalation, and an AI-generated daily care brief. Role-based access for elder, family, and caregiver, with an audit timeline behind every action.
 
-**Built to be trusted:** zero runtime dependencies, five `node --test` suites, accessibility-first UI (keyboard focus, reduced motion, large targets), Cloud Run container with a health endpoint, and a Gemini adapter that falls back deterministically when the model is unavailable.
+**Why it is hard:** the safe version of this app cannot depend on the model. CareMesh is a zero-dependency Node service — five `node --test` suites, an accessibility-first UI (keyboard focus, reduced motion, large targets), a Cloud Run container with a health endpoint, and a Gemini adapter that falls back deterministically when the model is unavailable.
 
 `JavaScript` `Node.js` `Vertex AI` `Docker` `Cloud Run` `Resend`
 
@@ -75,9 +44,11 @@ A care circle for the people who actually coordinate care: medication scheduling
 
 <br/>
 
-### 🔍 EVIDENT — evidence-grounded recruitment intelligence
+### EVIDENT — evidence-grounded recruitment intelligence
 
-Recruiting has an evidence problem, not a reading problem. EVIDENT builds a candidate evidence graph per workspace: requirements extracted from the job description, claims extracted from resumes, and every link carrying its source, snippet, status, and the interview question that would resolve it. Interview answers update the graph. No scores, no rankings, no hire/reject.
+Recruiting has an evidence problem, not a reading problem. EVIDENT builds a candidate evidence graph per workspace: requirements extracted from the job description, claims extracted from resumes, and every link carrying its source, snippet, status, and the interview question that would resolve it. Interview answers update the graph.
+
+<sub>Deliberately no scores, no rankings, no hire/reject — the output is what a human team can prove, and what to ask next.</sub>
 
 `TypeScript` `Next.js` `React` `Supabase` `Zod` `PDF parsing`
 
@@ -85,9 +56,9 @@ Recruiting has an evidence problem, not a reading problem. EVIDENT builds a cand
 
 <br/>
 
-### 🕸️ Mule Detection — network analysis for fraudulent accounts
+### Mule Detection — network analysis for fraudulent accounts
 
-A Next.js investigation console that renders account networks as an interactive force graph, with Plotly and Recharts layers for the underlying signals, backed by Firebase. Built as a team project.
+A Next.js investigation console that renders account networks as an interactive force graph, with Plotly and Recharts layers over the underlying signals, backed by Firebase. Team project.
 
 `Next.js` `React` `Three.js` `3d-force-graph` `Plotly` `Firebase`
 
@@ -95,9 +66,9 @@ A Next.js investigation console that renders account networks as an interactive 
 
 <br/>
 
-### 📝 Plagiarism Checker — originality engine
+### Plagiarism Checker — originality engine
 
-A checker that runs offline by default and against the live web when you give it a backend: a shingle-containment engine scores local corpus matches, while a Node service searches for distinctive sentences, fetches the top results, and feeds them through the same logic so web matches land in the same report. Monochrome gallery UI, no build step.
+A shingle-containment engine scores matches against a local corpus; a Node service searches the live web for distinctive sentences, fetches the top results, and feeds them through the same logic so web matches land in one report. Monochrome gallery UI, no build step.
 
 `JavaScript` `Node.js` `SerpAPI` `HTML` `CSS`
 
@@ -105,83 +76,87 @@ A checker that runs offline by default and against the live web when you give it
 
 <br/>
 
-### 🚢 FreightPulse — freight forecasting dashboard
-
-A SIH 2026 build: forecasting, demurrage modelling, scenario optimization, AIS monitoring, model training, and a live war room for freight operations.
-
-`JavaScript` `Vite` `Chart.js` `HTML` `CSS`
-
+**FreightPulse** — freight forecasting dashboard built for SIH 2026: forecasting, demurrage modelling, scenario optimization, AIS monitoring, and a live war room.
+`JavaScript` `Vite` `Chart.js`
 [Repository](https://github.com/Swapneel-Sethi/freightpulse-frontend)
 
-<br/>
-
-### 🌐 Freight Oracle — logistics command dashboard
-
-The TypeScript counterpart: a command dashboard, crisis war room, demurrage simulator, fleet ballaster, and scenario optimizer, drawn over real India coastline GeoJSON with deck.gl and a custom Three.js renderer.
-
+**Freight Oracle** — the TypeScript counterpart: command dashboard, crisis war room, demurrage simulator, and fleet ballaster over real India coastline GeoJSON with deck.gl and a custom Three.js renderer.
 `TypeScript` `React` `deck.gl` `Three.js` `TanStack Query` `Recharts`
-
 [Repository](https://github.com/Swapneel-Sethi/freight-oracle-frontend)
 
 ---
 
-## `04` — ACTIVITY
+## `03` · STACK
 
-**14 contributions in the last 12 months** · 7 public repositories · on GitHub since July 2025.
+<sub>Only what actually appears in my repositories.</sub>
 
-Most of my commit history lives in projects authored under a local git identity, so the public contribution graph undercounts the real work. The repositories above are the honest record.
+**LANGUAGES**
 
-[→ Full contribution graph](https://github.com/Swapneel-Sethi?tab=overview&from=2026-01-01&to=2026-12-31)
+`TypeScript` `JavaScript` `Python` `HTML` `CSS`
+
+**FRONTEND**
+
+`React` `Next.js` `Vite` `Tailwind CSS` `Chart.js` `Recharts` `Three.js` `deck.gl` `D3`
+
+**BACKEND**
+
+`Node.js` `Next.js route handlers` `Zod`
+
+**AI / DATA**
+
+`Google Vertex AI (Gemini)` `pdf-parse` `unpdf` `vis-network` `3d-force-graph`
+
+**DATABASE / AUTH**
+
+`Supabase` `Firebase`
+
+**DEVOPS**
+
+`Docker` `Cloud Run` `Cloud Build` `Vercel` `GitHub Actions`
 
 ---
 
-## `05` — CURRENTLY BUILDING
+## `04` · ACTIVITY
 
-```text
-┌────────────────────────────────────────────────────────────┐
-│  CURRENTLY BUILDING                                        │
-│                                                            │
-│  → CareMesh      care coordination + AI care briefs        │
-│  → EVIDENT       evidence graphs for hiring teams          │
-│  → Freight stack forecasting + logistics war rooms         │
-└────────────────────────────────────────────────────────────┘
-```
+**16 public contributions in the last 12 months.** The card above is generated from the GitHub API; the breakdown below is the same data, by month.
+
+| Month | Active days | Contributions |
+| :--- | ---: | ---: |
+| Aug 2026 | 3 | 4 |
+| Sep 2026 | 2 | 3 |
+| Nov 2026 | 2 | 9 |
+| **Total** | **7** | **16** |
+
+<sub>Most of my commit history was authored under a local git identity that is not linked to this account, so GitHub's graph undercounts the real work. The repositories above are the honest record.</sub>
+
+[→ Full contribution graph](https://github.com/Swapneel-Sethi?tab=overview)
 
 ---
 
-## `06` — TERMINAL
+## `05` · TERMINAL
 
 ```text
 $ whoami
 
 swapneel-sethi
 full-stack developer
-builds AI-assisted products
-ships them deployed
+AI-assisted products
 
-$ current_status
+$ focus
 
-reading the brief
-finding the real problem
-building the smallest thing that solves it
-deploying it
+build → test → deploy → iterate
 
 $ principle
 
-working software over slides
+working software > slides
 ```
 
 ---
 
 <div align="center">
 
-### Have a problem worth building for?
+**HAVE A PROBLEM WORTH BUILDING?**
 
-[![GitHub](https://img.shields.io/badge/Open_an_issue-0a0f14?style=for-the-badge&logo=github&logoColor=00ff9c)](https://github.com/Swapneel-Sethi)
-[![Repositories](https://img.shields.io/badge/Browse_repositories-0a0f14?style=for-the-badge&logo=git&logoColor=22d3ee)](https://github.com/Swapneel-Sethi?tab=repositories)
-
-<sub>`─────────────────────────────────────────────────────────────`</sub>
-
-<sub>Every number on this page comes from the GitHub API. Nothing here is a placeholder.</sub>
+[EXPLORE PROJECTS](#projects) &nbsp;·&nbsp; [OPEN GITHUB](https://github.com/Swapneel-Sethi)
 
 </div>
