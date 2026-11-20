@@ -1,4 +1,4 @@
-﻿<div align="center">
+<div align="center">
 
 <sub>`FULL-STACK DEVELOPER` &nbsp;·&nbsp; `AI-ASSISTED PRODUCTS` &nbsp;·&nbsp; `SHIPS DEPLOYED`</sub>
 
