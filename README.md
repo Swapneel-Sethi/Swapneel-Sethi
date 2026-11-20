@@ -116,18 +116,7 @@ A shingle-containment engine scores matches against a local corpus; a Node servi
 
 ## `04` · ACTIVITY
 
-<!--activity:start-->
-**19 public contributions in the last 12 months.** The card above is generated from the GitHub API; the breakdown below is the same data, by month.
-
-| Month | Active days | Contributions |
-| :--- | ---: | ---: |
-| Aug 2026 | 3 | 4 |
-| Sep 2026 | 2 | 3 |
-| Nov 2026 | 2 | 12 |
-| **Total** | **7** | **19** |
-<!--activity:end-->
-
-<sub>Most of my commit history was authored under a local git identity that is not linked to this account, so GitHub's graph undercounts the real work. The repositories above are the honest record.</sub>
+Contribution counts undersell this account. Most of my history was authored under a local git identity that is not linked here, so GitHub's graph is not the record of the work — the projects are. Six of them shipped between August and November 2026, and the graph will catch up as new commits land under the linked address.
 
 [→ Full contribution graph](https://github.com/Swapneel-Sethi?tab=overview)
 
