@@ -366,7 +366,7 @@ def heatmap(data):
     legend_x = right - len(BLUE) * 14
     labels = "".join(
         f'<text x="{gx + col * step}" y="{gy + 7 * step + 16}" font-family="{MONO}" font-size="11" fill="{MUTED}">{m}</text>'
-        for col, m in months if gx + col * step < legend_x - 46
+        for col, m in months if col < ncols - 12
     )
     legend = "".join(
         f'<rect x="{legend_x + i * 14}" y="{gy + 7 * step + 6}" width="11" height="11" rx="2.5" fill="{c}"/>'
