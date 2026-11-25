@@ -374,6 +374,136 @@ def stack():
                            "Tech stack: grouped by what it does, not by how many badges fit."))
 
 
+def readme_selected_section():
+    """Render the Selected Work section of README.md from data/projects.json."""
+    works = PROJECTS["selected_work"]
+    lines = ["Selected work\n---"]
+    for i, w in enumerate(works):
+        pinned_tag = " [PINNED]" if w.get("pinned") else ""
+        lines.append("")
+        lines.append(f"**{w['index']} · {w['name']}{pinned_tag}** — "
+                     f"[{w['url']}](https://{w['url']}) · [repo](https://github.com/Swapneel-Sethi/{w['repo']})")
+        lines.append(w["value"])
+        lines.append(f"Strongest signal: {w['signal'].rstrip('.')}.")
+        lines.append(f"**{w['metric']}** — {'live' if w.get('live') else 'repo'}.")
+    lines.append("")
+    lines.append("Pinned projects are flagship work protected from automatic removal.")
+    lines.append("Unpinned projects compete for the remaining Selected Work slots.")
+    return "\n".join(lines)
+
+
+def render_readme():
+    """Generate README.md from the data layer (human summary + data-driven sections)."""
+    profile = PROFILE
+    projects = PROJECTS
+    state = STATE
+
+    live_links = profile.get("live_links", [])
+    links_md = " &nbsp;/&nbsp; ".join(
+        f"[{l['label']}]({l['url']})" for l in live_links
+    )
+
+    what_i_build = projects["what_i_build"]
+    selected_work = projects["selected_work"]
+
+    # ---- image block (all cards generated from data) -----------------------
+    image_lines = [
+        '<div align="center">',
+        f'<a href="{profile["profile_url"]}"><img src="./cards/hero.svg" width="100%" alt="{escape(profile["bio"])}" /></a>',
+        '<div style="display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin-top:12px">',
+    ]
+    for t in what_i_build:
+        image_lines.append(
+            f'<a href="https://github.com/Swapneel-Sethi/{t["repos"][0] if t["repos"] else t["id"]}">'
+            f'<img src="./cards/build-{t["id"]}.svg" width="293.333" alt="{escape(t["label"])}: {t["num"]} {t["unit"]} — {t["body"]}" /></a>'
+        )
+    image_lines.append('</div>')
+    image_lines.append(f'<img src="./cards/proof.svg" width="100%" alt="Proof: verified portfolio signals derived from repository artifacts" />')
+
+    # work cards: two per row
+    for i in range(0, len(selected_work), 2):
+        row = selected_work[i:i + 2]
+        row_tags = []
+        for w in row:
+            row_tags.append(
+                f'<a href="https://github.com/Swapneel-Sethi/{w["repo"]}">'
+                f'<img src="./cards/work-{w["id"]}.svg" width="440" alt="{escape(w["name"])} — Live: {w["url"]}" /></a>'
+            )
+        image_lines.append("".join(row_tags))
+
+    image_lines += [
+        f'<img src="./cards/how.svg" width="100%" alt="How I build: five steps tied to the repos" />',
+        f'<img src="./cards/building.svg" width="100%" alt="Currently building: shipped, then pushed further" />',
+        f'<img src="./cards/stack.svg" width="100%" alt="Tech stack grouped by what it does" />',
+        '</div>',
+    ]
+
+    # ---- human-written summary (data-driven content) -----------------------
+    build_blocks = []
+    for t in what_i_build:
+        build_blocks.append(
+            f"**{t['label']}** — {t['num']} {t['unit']}\n"
+            f"{t['tag']} — {t['body']}"
+        )
+
+    proof_lines = ["Proof, not claims\n---",
+                   "",
+                   "Every metric below is verified against repository artifacts:"]
+    for sig in state["proof_signals"]:
+        proof_lines.append(
+            f"- **{sig['source']}** — {sig['label']} {sig['text']}."
+        )
+    proof_lines.append("")
+    proof_lines.append("No expert, elite, visionary or world-class language. "
+                       "These are implementation facts from the repos.")
+
+    currently = projects["currently_building"]
+    building_lines = ["Currently building\n---"]
+    for item in currently:
+        building_lines.append(
+            f"- **{item['name']}** — {item['status']}. {item['description']}"
+        )
+
+    stack_lines = ["Tech stack\n---"]
+    for group in projects["tech_stack"]:
+        stack_lines.append(
+            f"- **{group['group']}** — {', '.join(group['items'])}"
+        )
+
+    links_lines = ["Links\n---",
+                   f"- **GitHub** — github.com/Swapneel-Sethi",
+                   f"- **Live work** — {links_md}"]
+
+    parts = [
+        f"# {profile['name']}",
+        "",
+        f"{profile['role']} — {profile['bio']}",
+        "",
+        "\n".join(image_lines),
+        "",
+        "## What I build",
+        "",
+        "\n\n".join(build_blocks),
+        "",
+        readme_selected_section(),
+        "",
+        "\n".join(proof_lines),
+        "",
+        "\n".join(building_lines),
+        "",
+        "\n".join(stack_lines),
+        "",
+        "\n".join(links_lines),
+        "",
+    ]
+    readme_path = os.path.join(ROOT, "README.md")
+    with open(readme_path, "w", encoding="utf-8") as f:
+        f.write("\n".join(parts))
+    with open(readme_path, encoding="utf-8") as f:
+        content = f.read()
+    print(f"wrote README.md ({len(content) // 1024} KB)")
+
+
 if __name__ == "__main__":
     hero()
     build_tiles()
@@ -382,3 +512,4 @@ if __name__ == "__main__":
     how()
     building()
     stack()
+    render_readme()

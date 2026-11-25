@@ -2,7 +2,10 @@
   "name": "Swapneel Sethi",
   "role": "Full-stack developer",
   "tagline": "FULL-STACK DEVELOPER · AI PRODUCTS, SHIPPED",
-  "headline": ["I build AI products end to end —", "data, model, interface — and put them online."],
+  "headline": [
+    "I build AI products end to end —",
+    "data, model, interface — and put them online."
+  ],
   "url": "github.com/Swapneel-Sethi",
   "profile_url": "https://github.com/Swapneel-Sethi",
   "bio": "Full-stack developer — I build AI products end to end: data, model, interface, and put them online.",
@@ -29,13 +32,34 @@
     "LINKS"
   ],
   "live_links": [
-    {"label": "github", "url": "https://github.com/Swapneel-Sethi"},
-    {"label": "evident", "url": "https://evident-olive.vercel.app"},
-    {"label": "holdout", "url": "https://holdout-taupe-iota.vercel.app"},
-    {"label": "airloom", "url": "https://airloom-brown.vercel.app"},
-    {"label": "caremesh", "url": "https://caremesh-one.vercel.app"},
-    {"label": "muleguard", "url": "https://mule-detection.vercel.app"},
-    {"label": "pdf-hater", "url": "https://pdfhater.vercel.app"}
+    {
+      "label": "github",
+      "url": "https://github.com/Swapneel-Sethi"
+    },
+    {
+      "label": "evident",
+      "url": "https://evident-olive.vercel.app"
+    },
+    {
+      "label": "holdout",
+      "url": "https://holdout-taupe-iota.vercel.app"
+    },
+    {
+      "label": "airloom",
+      "url": "https://airloom-brown.vercel.app"
+    },
+    {
+      "label": "caremesh",
+      "url": "https://caremesh-one.vercel.app"
+    },
+    {
+      "label": "muleguard",
+      "url": "https://mule-detection.vercel.app"
+    },
+    {
+      "label": "pdf-hater",
+      "url": "https://pdfhater.vercel.app"
+    }
   ],
   "truthfulness_notes": [
     "No expert / elite / visionary / world-class language",

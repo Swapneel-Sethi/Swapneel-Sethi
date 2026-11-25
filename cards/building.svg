@@ -16,7 +16,7 @@
 .nu{transform-box:fill-box;animation:nudgeup 1.8s ease-in-out infinite}
 .sh{animation:sheen 6s ease-in-out infinite}
 @media (prefers-reduced-motion: reduce){.r,.f,.g,.p,.live,.n,.nu{animation:none!important;opacity:1!important;transform:none!important}.sh{display:none}}
-.r,.f,.g,.p,.live,.n,.nu{animation:none!important;opacity:1!important;transform:none!important}.sh{display:none}</style>
+</style>
 <rect width="880" height="236" rx="14" fill="#f3f3f1"/>
 <text class="f" style="animation-delay:0.05s" x="40" y="38" font-family="'Geist Mono', ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11" letter-spacing="1.4" fill="#6e6e73">CURRENTLY BUILDING</text>
 <text class="r" style="animation-delay:0.10s" x="40" y="66" font-family="'Instrument Serif', Georgia, serif" font-size="24" fill="#111111">Shipped, then pushed <tspan font-style="italic">further.</tspan></text>

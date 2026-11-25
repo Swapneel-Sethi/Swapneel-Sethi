@@ -16,7 +16,7 @@
 .nu{transform-box:fill-box;animation:nudgeup 1.8s ease-in-out infinite}
 .sh{animation:sheen 6s ease-in-out infinite}
 @media (prefers-reduced-motion: reduce){.r,.f,.g,.p,.live,.n,.nu{animation:none!important;opacity:1!important;transform:none!important}.sh{display:none}}
-.r,.f,.g,.p,.live,.n,.nu{animation:none!important;opacity:1!important;transform:none!important}.sh{display:none}</style>
+</style>
 <defs><clipPath id="work0"><rect width="428.0" height="322" rx="14"/></clipPath></defs>
 <g clip-path="url(#work0)">
   <rect width="428.0" height="322" fill="#f3f3f1"/>

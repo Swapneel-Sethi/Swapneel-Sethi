@@ -16,7 +16,7 @@
 .nu{transform-box:fill-box;animation:nudgeup 1.8s ease-in-out infinite}
 .sh{animation:sheen 6s ease-in-out infinite}
 @media (prefers-reduced-motion: reduce){.r,.f,.g,.p,.live,.n,.nu{animation:none!important;opacity:1!important;transform:none!important}.sh{display:none}}
-.r,.f,.g,.p,.live,.n,.nu{animation:none!important;opacity:1!important;transform:none!important}.sh{display:none}</style>
+</style>
 <rect width="880" height="190" rx="14" fill="#f3f3f1"/>
 <text class="f" style="animation-delay:0.05s" x="42" y="38" font-family="'Geist Mono', ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11" letter-spacing="1.4" fill="#6e6e73">PROOF, NOT CLAIMS</text>
 <text class="f" style="animation-delay:0.05s" x="838" y="38" text-anchor="end" font-family="'Geist Mono', ui-monospace, SFMono-Regular, Menlo, monospace" font-size="9.5" letter-spacing="1" fill="#6e6e73">VERIFIED FROM REPO ARTIFACTS</text>

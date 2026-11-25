@@ -16,7 +16,7 @@
 .nu{transform-box:fill-box;animation:nudgeup 1.8s ease-in-out infinite}
 .sh{animation:sheen 6s ease-in-out infinite}
 @media (prefers-reduced-motion: reduce){.r,.f,.g,.p,.live,.n,.nu{animation:none!important;opacity:1!important;transform:none!important}.sh{display:none}}
-.r,.f,.g,.p,.live,.n,.nu{animation:none!important;opacity:1!important;transform:none!important}.sh{display:none}</style><g transform="translate(8.000 0)">
+</style><g transform="translate(8.000 0)">
 <defs><clipPath id="card2"><rect width="285.3333333333333" height="264" rx="14"/></clipPath></defs>
 <g class="f" style="animation-delay:0.05s"><rect width="285.3333333333333" height="264" rx="14" fill="#f3f3f1"/>
   <rect x="0" y="0" width="285.3333333333333" height="5" fill="#ffc81a"/></g>

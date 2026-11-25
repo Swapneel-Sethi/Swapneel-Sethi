@@ -5,33 +5,54 @@
       "label": "PRODUCTS",
       "num": "04",
       "unit": "live products",
-      "headline": ["Tools people can", "open and use."],
+      "headline": [
+        "Tools people can",
+        "open and use."
+      ],
       "body": "Evidence review, dataset audits, air-quality planning and care coordination.",
       "tag": "EVIDENT · HOLDOUT · AIRLOOM · CAREMESH",
       "accent": "tech",
-      "repos": ["evident", "holdout", "airloom", "caremesh"]
+      "repos": [
+        "evident",
+        "holdout",
+        "airloom",
+        "caremesh"
+      ]
     },
     {
       "id": "ai-data",
       "label": "AI / DATA",
       "num": "59",
       "unit": "benchmark datasets",
-      "headline": ["Models with", "something to prove."],
+      "headline": [
+        "Models with",
+        "something to prove."
+      ],
       "body": "Leakage detection, fraud graphs and structured extraction, checked against artifacts.",
       "tag": "HOLDOUT · MULEGUARD · EVIDENT",
       "accent": "studio",
-      "repos": ["holdout", "mule-detection", "evident"]
+      "repos": [
+        "holdout",
+        "mule-detection",
+        "evident"
+      ]
     },
     {
       "id": "systems",
       "label": "SYSTEMS",
       "num": "32/32",
       "unit": "tests, two suites",
-      "headline": ["The parts that", "keep it standing."],
+      "headline": [
+        "The parts that",
+        "keep it standing."
+      ],
       "body": "Signed sessions, server-side authorization, provider failover, audit trails.",
       "tag": "CAREMESH · AIRLOOM",
       "accent": "learn",
-      "repos": ["caremesh", "airloom"]
+      "repos": [
+        "caremesh",
+        "airloom"
+      ]
     }
   ],
   "selected_work": [
@@ -46,7 +67,8 @@
       "url": "evident-olive.vercel.app",
       "repo": "evident",
       "live": true,
-      "verified": true
+      "verified": true,
+      "pinned": true
     },
     {
       "id": "holdout",
@@ -59,7 +81,8 @@
       "url": "holdout-taupe-iota.vercel.app",
       "repo": "holdout",
       "live": true,
-      "verified": true
+      "verified": true,
+      "pinned": true
     },
     {
       "id": "airloom",
@@ -72,7 +95,8 @@
       "url": "airloom-brown.vercel.app",
       "repo": "airloom",
       "live": true,
-      "verified": true
+      "verified": true,
+      "pinned": true
     },
     {
       "id": "caremesh",
@@ -85,7 +109,8 @@
       "url": "caremesh-one.vercel.app",
       "repo": "caremesh",
       "live": true,
-      "verified": true
+      "verified": true,
+      "pinned": true
     }
   ],
   "currently_building": [
@@ -120,38 +145,170 @@
   "tech_stack": [
     {
       "group": "FRONTEND",
-      "items": ["React", "Next.js", "TypeScript", "Tailwind", "Three.js", "Recharts"],
+      "items": [
+        "React",
+        "Next.js",
+        "TypeScript",
+        "Tailwind",
+        "Three.js",
+        "Recharts"
+      ],
       "accent": "tech"
     },
     {
       "group": "BACKEND",
-      "items": ["Node.js", "FastAPI", "REST APIs", "Supabase", "Firestore", "Zod"],
+      "items": [
+        "Node.js",
+        "FastAPI",
+        "REST APIs",
+        "Supabase",
+        "Firestore",
+        "Zod"
+      ],
       "accent": "ink"
     },
     {
       "group": "AI / DATA",
-      "items": ["Gemini", "Groq", "Mistral", "XGBoost", "scikit-learn", "pandas"],
+      "items": [
+        "Gemini",
+        "Groq",
+        "Mistral",
+        "XGBoost",
+        "scikit-learn",
+        "pandas"
+      ],
       "accent": "studio"
     },
     {
       "group": "INFRASTRUCTURE",
-      "items": ["Vercel", "Cloud Run", "Docker", "GitHub Actions", "Resend"],
+      "items": [
+        "Vercel",
+        "Cloud Run",
+        "Docker",
+        "GitHub Actions",
+        "Resend"
+      ],
       "accent": "learn"
     },
     {
       "group": "SYSTEMS",
-      "items": ["Auth + sessions", "audit trails", "provider failover", "rule fallbacks"],
+      "items": [
+        "Auth + sessions",
+        "audit trails",
+        "provider failover",
+        "rule fallbacks"
+      ],
       "accent": "tech"
     }
   ],
   "secondary_work": [
-    {"name": "MuleGuard", "note": "Technically substantive (XGBoost + graph + 3D + Markov) but not selected top 4. Demo live on synthetic data."},
-    {"name": "Plagiarism Checker", "note": "Strong shingle + semantic implementation; no stable public live URL (Vercel-protected preview)."},
-    {"name": "PDF-Hater", "note": "25 fully client-side PDF tools; live at pdfhater.vercel.app."},
-    {"name": "FreightOracle", "note": "Frontend prototype; simulated fallback data, no backend in repo."},
-    {"name": "FreightPulse", "note": "SIH 2026 UI prototype; simulated data, no backend."},
-    {"name": "AERASCAN", "note": "Simulated demonstration build; provenance-labelled throughout."}
+    {
+      "name": "MuleGuard",
+      "note": "Technically substantive (XGBoost + graph + 3D + Markov) but not selected top 4. Demo live on synthetic data."
+    },
+    {
+      "name": "Plagiarism Checker",
+      "note": "Strong shingle + semantic implementation; no stable public live URL (Vercel-protected preview)."
+    },
+    {
+      "name": "PDF-Hater",
+      "note": "25 fully client-side PDF tools; live at pdfhater.vercel.app."
+    },
+    {
+      "name": "FreightOracle",
+      "note": "Frontend prototype; simulated fallback data, no backend in repo."
+    },
+    {
+      "name": "FreightPulse",
+      "note": "SIH 2026 UI prototype; simulated data, no backend."
+    },
+    {
+      "name": "AERASCAN",
+      "note": "Simulated demonstration build; provenance-labelled throughout."
+    },
+    {
+      "name": "Swapneel-Sethi",
+      "note": "Auto-discovered (moderate, score 78): Developer profile",
+      "repo": "Swapneel-Sethi",
+      "live": false,
+      "tier": "moderate",
+      "score": 78
+    },
+    {
+      "name": "freight-oracle-frontend",
+      "note": "Auto-discovered (light, score 28): Freight decision cockpit UI prototype: forecasts, scenario optimization, demurrage risk and ballast supply.",
+      "repo": "freight-oracle-frontend",
+      "live": false,
+      "tier": "light",
+      "score": 28
+    },
+    {
+      "name": "freightpulse-frontend",
+      "note": "Auto-discovered (light, score 38): Freight forecasting dashboard UI prototype for SIH 2026; simulated data, no backend.",
+      "repo": "freightpulse-frontend",
+      "live": false,
+      "tier": "light",
+      "score": 38
+    },
+    {
+      "name": "plagiarism-checker",
+      "note": "Auto-discovered (light, score 38): Plagiarism and AI-writing checker: shingle containment, web search and semantic paraphrase pass.",
+      "repo": "plagiarism-checker",
+      "live": false,
+      "tier": "light",
+      "score": 38
+    },
+    {
+      "name": "mule-detection",
+      "note": "Auto-discovered (light, score 48): Mule-account detection cockpit: transaction graph, XGBoost scoring and behavioural states on synthetic data.",
+      "repo": "mule-detection",
+      "live": false,
+      "tier": "light",
+      "score": 48
+    },
+    {
+      "name": "caremesh",
+      "note": "Auto-discovered (moderate, score 63): Elder-first care coordination: medications, appointments, reminders and a trusted care circle.",
+      "repo": "caremesh",
+      "live": false,
+      "tier": "moderate",
+      "score": 63
+    },
+    {
+      "name": "airloom",
+      "note": "Auto-discovered (moderate, score 73): Air-quality forecast turned into a personal day plan: when to move, commute, ventilate and what to change. live: https://airloom-brown.vercel.app/#method",
+      "repo": "airloom",
+      "live": true,
+      "tier": "moderate",
+      "score": 73
+    },
+    {
+      "name": "holdout",
+      "note": "Auto-discovered (strong, score 83): Dataset leakage audit: find leaked columns, quantify the honesty gap, return Ship / Review / Block verdict. live: https://holdout-taupe-iota.vercel.app/benchmark, https://holdout-taupe-iota.vercel.app/method",
+      "repo": "holdout",
+      "live": true,
+      "tier": "strong",
+      "score": 83
+    },
+    {
+      "name": "evident",
+      "note": "Auto-discovered (light, score 43): Evidence-first hiring review: map resume claims to job requirements, sources and interview answers â€” the human decides.",
+      "repo": "evident",
+      "live": false,
+      "tier": "light",
+      "score": 43
+    },
+    {
+      "name": "CATALYST-HACKS",
+      "note": "Auto-discovered (light, score 3):",
+      "repo": "CATALYST-HACKS",
+      "live": false,
+      "tier": "light",
+      "score": 3
+    }
   ],
-  "archived": ["CATALYST-HACKS"],
+  "archived": [
+    "CATALYST-HACKS"
+  ],
   "never_delete": true
 }
