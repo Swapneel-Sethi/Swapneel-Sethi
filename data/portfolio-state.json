@@ -1,0 +1,21 @@
+{
+  "proof_signals": [
+    {"label": "59", "text": "datasets in the leakage benchmark", "source": "HOLDOUT", "verified": true},
+    {"label": "0.908", "text": "leak recall on that benchmark", "source": "HOLDOUT", "verified": true},
+    {"label": "0.869", "text": "F1 on the leakage benchmark", "source": "HOLDOUT", "verified": true},
+    {"label": "0.833", "text": "clean pass rate on clean controls", "source": "HOLDOUT", "verified": true},
+    {"label": "13/13", "text": "Airloom self-checks pass", "source": "AIRLOOM", "verified": true},
+    {"label": "19/19", "text": "CareMesh tests pass", "source": "CAREMESH", "verified": true},
+    {"label": "25", "text": "client-side PDF tools", "source": "PDF-HATER", "verified": true}
+  ],
+  "verified_metrics": {
+    "holdout": {"datasets": 59, "f1": 0.869, "leak_recall": 0.908, "clean_pass": 0.833, "verified_claims": 1.0},
+    "airloom": {"self_checks": 13, "self_checks_pass": 13},
+    "caremesh": {"tests": 19, "tests_pass": 19},
+    "pdfhater": {"tools": 25, "client_side": true}
+  },
+  "muleguard": {"engineered_accounts": 87613, "features": 16, "xgboost_trees": 200, "synthetic": true},
+  "aeroscan": {"pipeline_stages": 21, "simulated": true},
+  "last_updated": null,
+  "source": "repository artifacts"
+}

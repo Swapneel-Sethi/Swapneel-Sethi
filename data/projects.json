@@ -1,0 +1,157 @@
+{
+  "what_i_build": [
+    {
+      "id": "products",
+      "label": "PRODUCTS",
+      "num": "04",
+      "unit": "live products",
+      "headline": ["Tools people can", "open and use."],
+      "body": "Evidence review, dataset audits, air-quality planning and care coordination.",
+      "tag": "EVIDENT · HOLDOUT · AIRLOOM · CAREMESH",
+      "accent": "tech",
+      "repos": ["evident", "holdout", "airloom", "caremesh"]
+    },
+    {
+      "id": "ai-data",
+      "label": "AI / DATA",
+      "num": "59",
+      "unit": "benchmark datasets",
+      "headline": ["Models with", "something to prove."],
+      "body": "Leakage detection, fraud graphs and structured extraction, checked against artifacts.",
+      "tag": "HOLDOUT · MULEGUARD · EVIDENT",
+      "accent": "studio",
+      "repos": ["holdout", "mule-detection", "evident"]
+    },
+    {
+      "id": "systems",
+      "label": "SYSTEMS",
+      "num": "32/32",
+      "unit": "tests, two suites",
+      "headline": ["The parts that", "keep it standing."],
+      "body": "Signed sessions, server-side authorization, provider failover, audit trails.",
+      "tag": "CAREMESH · AIRLOOM",
+      "accent": "learn",
+      "repos": ["caremesh", "airloom"]
+    }
+  ],
+  "selected_work": [
+    {
+      "id": "evident",
+      "name": "EVIDENT",
+      "index": "01",
+      "accent": "tech",
+      "value": "Hiring evidence, not hiring scores. Claims, sources and interview answers flow through six review states; the human decides.",
+      "signal": "Three AI providers with automatic failover. Zod-validated orchestration before persistence.",
+      "metric": "3-PROVIDER FAILOVER",
+      "url": "evident-olive.vercel.app",
+      "repo": "evident",
+      "live": true,
+      "verified": true
+    },
+    {
+      "id": "holdout",
+      "name": "HOLDOUT",
+      "index": "02",
+      "accent": "studio",
+      "value": "Audit the dataset before trusting the score. Holdout finds leakage, quantifies how much a validation score survives once suspicious columns are removed, verifies its own findings and returns Ship, Review or Block.",
+      "signal": "Six-stage audit, eight deterministic detectors, second-path verification. No LLM verdict.",
+      "metric": "59 DATASETS · F1 0.869",
+      "url": "holdout-taupe-iota.vercel.app",
+      "repo": "holdout",
+      "live": true,
+      "verified": true
+    },
+    {
+      "id": "airloom",
+      "name": "AIRLOOM",
+      "index": "03",
+      "accent": "learn",
+      "value": "An air-quality forecast turned into a day plan: when to move, commute, ventilate and what to change. Every recommendation states its reason and its data source.",
+      "signal": "Deterministic planning core. Gemini explains the plan but never invents a reading.",
+      "metric": "13/13 SELF-CHECKS",
+      "url": "airloom-brown.vercel.app",
+      "repo": "airloom",
+      "live": true,
+      "verified": true
+    },
+    {
+      "id": "caremesh",
+      "name": "CAREMESH",
+      "index": "04",
+      "accent": "ink",
+      "value": "Care coordination where the elder stays in control — medications, appointments, reminders and a trusted care circle.",
+      "signal": "Scrypt passcodes, HMAC-signed sessions, server-side authorization on every protected write.",
+      "metric": "19/19 TESTS",
+      "url": "caremesh-one.vercel.app",
+      "repo": "caremesh",
+      "live": true,
+      "verified": true
+    }
+  ],
+  "currently_building": [
+    {
+      "name": "MuleGuard",
+      "status": "DEMO LIVE",
+      "status_accent": "studio",
+      "description": "Fraud graph with 87,613 engineered accounts. Next: evaluation beyond synthetic labels.",
+      "repo": "mule-detection",
+      "live": true,
+      "simulated": false
+    },
+    {
+      "name": "AERASCAN",
+      "status": "SIMULATED",
+      "status_accent": "learn",
+      "description": "A 21-stage reconstruction UX where every value carries provenance. Next: a real CV backend.",
+      "repo": "aeroscan-droneFootage_to_3dModelling",
+      "live": false,
+      "simulated": true
+    },
+    {
+      "name": "The Honest Planner",
+      "status": "52 TESTS",
+      "status_accent": "tech",
+      "description": "Investing education and planning. Deployment is currently access-protected.",
+      "repo": "the-honest-planner",
+      "live": false,
+      "simulated": false
+    }
+  ],
+  "tech_stack": [
+    {
+      "group": "FRONTEND",
+      "items": ["React", "Next.js", "TypeScript", "Tailwind", "Three.js", "Recharts"],
+      "accent": "tech"
+    },
+    {
+      "group": "BACKEND",
+      "items": ["Node.js", "FastAPI", "REST APIs", "Supabase", "Firestore", "Zod"],
+      "accent": "ink"
+    },
+    {
+      "group": "AI / DATA",
+      "items": ["Gemini", "Groq", "Mistral", "XGBoost", "scikit-learn", "pandas"],
+      "accent": "studio"
+    },
+    {
+      "group": "INFRASTRUCTURE",
+      "items": ["Vercel", "Cloud Run", "Docker", "GitHub Actions", "Resend"],
+      "accent": "learn"
+    },
+    {
+      "group": "SYSTEMS",
+      "items": ["Auth + sessions", "audit trails", "provider failover", "rule fallbacks"],
+      "accent": "tech"
+    }
+  ],
+  "secondary_work": [
+    {"name": "MuleGuard", "note": "Technically substantive (XGBoost + graph + 3D + Markov) but not selected top 4. Demo live on synthetic data."},
+    {"name": "Plagiarism Checker", "note": "Strong shingle + semantic implementation; no stable public live URL (Vercel-protected preview)."},
+    {"name": "PDF-Hater", "note": "25 fully client-side PDF tools; live at pdfhater.vercel.app."},
+    {"name": "FreightOracle", "note": "Frontend prototype; simulated fallback data, no backend in repo."},
+    {"name": "FreightPulse", "note": "SIH 2026 UI prototype; simulated data, no backend."},
+    {"name": "AERASCAN", "note": "Simulated demonstration build; provenance-labelled throughout."}
+  ],
+  "archived": ["CATALYST-HACKS"],
+  "never_delete": true
+}

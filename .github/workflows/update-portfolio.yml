@@ -1,0 +1,45 @@
+name: Update portfolio
+
+# Refreshes the portfolio data layer and SVG cards from real repository data.
+# Runs daily, on push to main, and on-demand. Never redesigns the profile;
+# only project/content data is updated automatically.
+
+"on":
+  schedule:
+    - cron: "17 6 * * *"   # ~06:17 UTC every day
+  push:
+    branches: [main]
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  portfolio:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: pip install -r scripts/requirements.txt
+
+      - name: Discover public repos and enrich portfolio data
+        run: python scripts/update_portfolio_data.py
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+
+      - name: Render README cards from data layer
+        run: python scripts/render_readme_cards.py
+
+      - name: Validate generated assets
+        run: python scripts/validate_portfolio.py
+
+      - name: Commit updated portfolio data and cards
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "chore: refresh portfolio data and cards [skip ci]"
+          file_pattern: "data/*.json cards/*.svg"
