@@ -69,6 +69,32 @@ for w in selected_work:
         sys.exit(1)
 print(f"all {len(selected_work)} selected projects have cards and live URLs")
 
+# 5d. Pinned status: README shows [PINNED] only for pinned projects.
+pinned_names = {w["name"] for w in selected_work if w.get("pinned")}
+unpinned_names = {w["name"] for w in selected_work if not w.get("pinned")}
+for name in pinned_names:
+    if f"{name} [PINNED]" not in readme:
+        print(f"PINNED PROJECT {name} missing [PINNED] tag in README")
+        sys.exit(1)
+for name in unpinned_names:
+    if f"{name} [PINNED]" in readme:
+        print(f"UNPINNED PROJECT {name} incorrectly shows [PINNED] tag in README")
+        sys.exit(1)
+print(f"pinned status correct: pinned={pinned_names} unpinned={unpinned_names}")
+
+# 5e. selected-work state contains real scores when discovery data available.
+state_scores = state.get("selected_work_scores", {})
+for w in selected_work:
+    repo = w["repo"]
+    if repo not in state_scores:
+        print(f"SELECTED WORK {repo} missing from portfolio-state scores")
+        sys.exit(1)
+    score = state_scores[repo]
+    if not isinstance(score, (int, float)) or score <= 0:
+        print(f"SELECTED WORK {repo} has non-positive score {score}")
+        sys.exit(1)
+print(f"selected-work state has real scores: {state_scores}")
+
 # 5c. README links section should contain all live links.
 for l in profile.get("live_links", []):
     if l["url"] not in readme:

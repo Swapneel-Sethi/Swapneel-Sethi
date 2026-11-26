@@ -74,13 +74,13 @@
     "pipeline_stages": 21,
     "simulated": true
   },
-  "last_updated": "2026-11-25T22:42:37.759319Z",
+  "last_updated": "2026-11-26T05:01:34.126271Z",
   "source": "repository artifacts",
   "selected_work_scores": {
-    "evident": 0,
-    "holdout": 0,
-    "airloom": 0,
-    "caremesh": 0
+    "holdout": 83,
+    "evident": 43,
+    "airloom": 73,
+    "caremesh": 63
   },
   "promotion_candidates": []
 }

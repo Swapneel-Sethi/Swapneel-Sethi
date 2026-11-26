@@ -16,14 +16,14 @@
 .nu{transform-box:fill-box;animation:nudgeup 1.8s ease-in-out infinite}
 .sh{animation:sheen 6s ease-in-out infinite}
 @media (prefers-reduced-motion: reduce){.r,.f,.g,.p,.live,.n,.nu{animation:none!important;opacity:1!important;transform:none!important}.sh{display:none}}
-</style><g transform="translate(12.000 0)">
-<defs><clipPath id="work1"><rect width="428.0" height="322" rx="14"/></clipPath></defs>
-<g clip-path="url(#work1)">
+</style>
+<defs><clipPath id="work0"><rect width="428.0" height="322" rx="14"/></clipPath></defs>
+<g clip-path="url(#work0)">
   <rect width="428.0" height="322" fill="#f3f3f1"/>
   <rect x="0" y="0" width="6" height="322" fill="#ef3b2d"/>
 </g>
 <g class="f" style="animation-delay:0.05s">
-  <text x="28" y="38" font-family="'Geist Mono', ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11" letter-spacing="1.2" fill="#6e6e73">02 / HOLDOUT</text>
+  <text x="28" y="38" font-family="'Geist Mono', ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11" letter-spacing="1.2" fill="#6e6e73">01 / HOLDOUT</text>
   <circle class="live" cx="366.0" cy="34" r="4" fill="#ef3b2d"/>
   <text x="376.0" y="38" font-family="'Geist Mono', ui-monospace, SFMono-Regular, Menlo, monospace" font-size="10" letter-spacing="1.2" fill="#6e6e73">LIVE</text>
 </g>
@@ -34,4 +34,4 @@
 <text x="28" y="228" font-family="Geist, system-ui, -apple-system, sans-serif" font-size="12" fill="#111111">Six-stage audit, eight deterministic detectors,</text><text x="28" y="245" font-family="Geist, system-ui, -apple-system, sans-serif" font-size="12" fill="#111111">second-path verification. No LLM verdict.</text>
 <text class="r" style="animation-delay:0.58s" x="26" y="292" font-family="'Geist Mono', ui-monospace, SFMono-Regular, Menlo, monospace" font-size="10" letter-spacing="0.8" fill="#ef3b2d">59 DATASETS · F1 0.869</text>
 <text class="f" style="animation-delay:0.64s" x="28" y="312" font-family="'Geist Mono', ui-monospace, SFMono-Regular, Menlo, monospace" font-size="9" fill="#6e6e73">holdout-taupe-iota.vercel.app</text>
-</g></svg>
+</svg>

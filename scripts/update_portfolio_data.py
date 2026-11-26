@@ -259,6 +259,20 @@ def curate_selected_work(discovered, projects):
     # Start with ALL current selected (pinned + unpinned carried over).
     new_selected = list(current)
 
+    # Enrich existing selected projects with freshly computed discovery scores.
+    # Use the freshly computed score whenever the repo was discoverable; only
+    # fall back to the stored _score if the repo was not discovered. This
+    # prevents a missing stored _score from being treated as zero and making
+    # an ordinary candidate look artificially superior.
+    discovered_by_name = {d["name"]: d for d in discovered}
+    for w in new_selected:
+        disc = discovered_by_name.get(w["repo"])
+        if disc is not None:
+            disc_score = disc.get("_score_details", {}).get("score")
+            if disc_score is not None:
+                w["_score"] = disc_score
+        # else: keep the stored _score (fallback)
+
     # Count empty non-pinned slots.
     non_pinned_count = len([w for w in new_selected if not w.get("pinned")])
     open_slots = max_selected - len(pinned_selected) - non_pinned_count

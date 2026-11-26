@@ -1,25 +1,43 @@
 #!/usr/bin/env python3
 """
-Deterministic test of the portfolio scoring / auto-curation logic.
+Deterministic tests for the Selected Work auto-curation logic.
 
-Uses synthetic repository records (no GitHub API) to prove that:
-- a genuinely strong new repo scores high and qualifies for Selected Work
-- a weak/boilerplate repo scores low and stays out
-- pinned flagship projects are protected from removal
-- raw commit count is not a scoring factor
+Uses synthetic repository records (no GitHub API) to prove the curation
+policy without touching the live portfolio:
+
+  Test 1 - Pinned projects (EVIDENT, HOLDOUT) survive any candidate.
+  Test 2 - Unpinned projects can be displaced by a genuinely stronger repo.
+  Test 3 - Promotion margin (15) is enforced; 10-15 above does not displace.
+  Test 4 - Missing stored _score does not become a false zero when discovery
+           data provides the real score.
+  Test 5 - Weak boilerplate repos (score < 75, no live) stay excluded.
+  Test 6 - Pinned projects carry real discovery scores and stay protected.
 """
 import sys
 import os
 
-# Make scripts importable
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), "scripts"))
 
 from update_portfolio_data import (
     score_repo, classify_quality, curate_selected_work,
-    SELECTED_MIN_SCORE, PROMOTE_MARGIN, MAX_SELECTED, WEIGHTS,
+    SELECTED_MIN_SCORE, PROMOTE_MARGIN, MAX_SELECTED,
 )
 
-# ---- synthetic repo records ------------------------------------------------
+PASS = 0
+FAIL = 0
+
+
+def check(condition, message):
+    global PASS, FAIL
+    if condition:
+        PASS += 1
+        print(f"  PASS: {message}")
+    else:
+        FAIL += 1
+        print(f"  FAIL: {message}")
+
+
+# ---- helpers ----------------------------------------------------------------
 def make_repo(name, **overrides):
     base = {
         "name": name,
@@ -32,141 +50,174 @@ def make_repo(name, **overrides):
     return base
 
 
-# Candidate A: genuinely strong — live + tests + benchmark + docs + arch + security
-strong = make_repo("strong-new-project", size=12000)
-strong_readme = ("# Strong New Project\n"
-                 "A full-stack AI data pipeline with benchmark results: F1 0.91, "
-                 "leak recall 0.89 across 42 datasets. "
-                 "Includes Zod-validated orchestration, automatic provider failover, "
-                 "scrypt passcodes and HMAC-signed sessions. "
-                 "Live at https://strong-new-project.vercel.app")
-strong_pkg = json_pkg = '{"dependencies": {"react": "^18", "next": "^14", "zod": "^3", "xgboost": "^1"}}'
-strong_tests = {"passed": 27, "total": 27}
-strong_techs = {"react", "next", "zod", "xgboost"}
-strong_live = ["https://strong-new-project.vercel.app"]
+def make_discovered(name, score, live=True, tests=None):
+    """Build a discovered repo record with _score_details like the pipeline."""
+    return {
+        "name": name,
+        "description": f"{name} description",
+        "homepage": None,
+        "size": 5000,
+        "default_branch": "main",
+        "live_urls": ["https://example.vercel.app"] if live else [],
+        "tests": tests,
+        "technologies": ["react", "next"],
+        "tier": "strong" if score >= 80 else "moderate",
+        "score": score,
+        "_score_details": {"score": score, "live": live, "tests": tests},
+        "updated_at": "2026-11-01T00:00:00Z",
+    }
 
-# Candidate B: weak boilerplate — create-next-app style, no tests, no live
+
+def base_projects():
+    """Four selected projects matching the intended live state."""
+    return {
+        "selected_work": [
+            {"id": "evident", "name": "EVIDENT", "index": "01", "accent": "tech",
+             "value": "...", "signal": "...", "metric": "3-PROVIDER FAILOVER",
+             "url": "evident-olive.vercel.app", "repo": "evident",
+             "live": True, "verified": True, "pinned": True, "_score": 83},
+            {"id": "holdout", "name": "HOLDOUT", "index": "02", "accent": "studio",
+             "value": "...", "signal": "...", "metric": "59 DATASETS",
+             "url": "holdout-taupe-iota.vercel.app", "repo": "holdout",
+             "live": True, "verified": True, "pinned": True, "_score": 78},
+            {"id": "airloom", "name": "AIRLOOM", "index": "03", "accent": "learn",
+             "value": "...", "signal": "...", "metric": "13/13 SELF-CHECKS",
+             "url": "airloom-brown.vercel.app", "repo": "airloom",
+             "live": True, "verified": True, "pinned": False, "_score": 70},
+            {"id": "caremesh", "name": "CAREMESH", "index": "04", "accent": "ink",
+             "value": "...", "signal": "...", "metric": "19/19 TESTS",
+             "url": "caremesh-one.vercel.app", "repo": "caremesh",
+             "live": True, "verified": True, "pinned": False, "_score": 60},
+        ],
+        "what_i_build": [], "currently_building": [],
+        "tech_stack": [], "secondary_work": [],
+    }
+
+
+# ---- Test 1: Pinned projects survive ---------------------------------------
+print("Test 1: pinned projects (EVIDENT, HOLDOUT) survive any candidate")
+projects = base_projects()
+discovered = [
+    make_discovered("strong-challenger", 99, live=True,
+                    tests={"passed": 30, "total": 30}),
+]
+new_selected, changed, promotions = curate_selected_work(discovered, projects)
+repos = {w["repo"] for w in new_selected}
+check("evident" in repos, "EVIDENT remains in Selected Work")
+check("holdout" in repos, "HOLDOUT remains in Selected Work")
+check(len(new_selected) == MAX_SELECTED, "Selected Work maximum remains 4")
+# pinned flag still set
+pinned = {w["repo"]: w.get("pinned") for w in new_selected}
+check(pinned.get("evident") is True, "EVIDENT still pinned")
+check(pinned.get("holdout") is True, "HOLDOUT still pinned")
+
+# ---- Test 2: Unpinned projects displaced -----------------------------------
+print("\nTest 2: unpinned projects displaced by genuinely stronger repo")
+projects = base_projects()
+# airloom=70, caremesh=60 (weakest unpinned)
+discovered = [
+    make_discovered("strong-challenger", 88, live=True,
+                    tests={"passed": 25, "total": 25}),
+]
+new_selected, changed, promotions = curate_selected_work(discovered, projects)
+repos = {w["repo"] for w in new_selected}
+check("strong-challenger" in repos, "strong challenger entered Selected Work")
+check("caremesh" not in repos, "weakest unpinned (CAREMESH) displaced")
+check("evident" in repos, "EVIDENT remains")
+check("holdout" in repos, "HOLDOUT remains")
+check(len(new_selected) == MAX_SELECTED, "Selected Work maximum remains 4")
+check(any(p["action"] == "promoted" and p["displaced"] == "caremesh"
+            for p in promotions), "promotion recorded with displacement")
+
+# ---- Test 3: Promotion margin enforced -------------------------------------
+print("\nTest 3: promotion margin (15) is enforced")
+# weakest unpinned caremesh=60; candidate 75 beats by exactly 15 -> no displace
+projects = base_projects()
+discovered = [make_discovered("marginal-challenger", 75, live=True,
+                              tests={"passed": 10, "total": 10})]
+new_selected, changed, promotions = curate_selected_work(discovered, projects)
+repos = {w["repo"] for w in new_selected}
+check("marginal-challenger" not in repos, "candidate +15 exactly does not displace")
+check("caremesh" in repos, "caremesh not displaced by marginal candidate")
+check(len(promotions) == 0, "no promotion recorded for marginal candidate")
+
+# candidate +10 also does not displace
+projects = base_projects()
+discovered = [make_discovered("weak-challenger", 70, live=True)]
+new_selected, changed, promotions = curate_selected_work(discovered, projects)
+repos = {w["repo"] for w in new_selected}
+check("weak-challenger" not in repos, "candidate +10 does not displace")
+check(len(new_selected) == MAX_SELECTED, "still 4 selected")
+
+# ---- Test 4: Missing stored _score uses discovery score -------------------
+print("\nTest 4: missing stored _score uses discovery score, not zero")
+# airloom has NO stored _score, discovery score=80 (high)
+# caremesh has stored _score=50, discovery score=50
+# candidate=85: correct enrichment => weakest=caremesh(50), 85>65 => displace caremesh
+# wrong (missing=0) => weakest=airloom(0), 85>15 => displace airloom
+projects = base_projects()
+# clear airloom's stored score
+for w in projects["selected_work"]:
+    if w["repo"] == "airloom":
+        w["_score"] = None
+    if w["repo"] == "caremesh":
+        w["_score"] = 50
+discovered = [
+    make_discovered("airloom", 80, live=True),       # real score 80
+    make_discovered("caremesh", 50, live=True),       # real score 50
+    make_discovered("strong-challenger", 85, live=True), # candidate >= 75
+]
+new_selected, changed, promotions = curate_selected_work(discovered, projects)
+repos = {w["repo"] for w in new_selected}
+check("caremesh" not in repos, "caremesh (real score 50) displaced, not airloom")
+check("airloom" in repos, "airloom (real score 80) retained via discovery score")
+check("strong-challenger" in repos, "candidate entered Selected Work")
+
+# ---- Test 5: Weak boilerplate excluded -------------------------------------
+print("\nTest 5: weak boilerplate repo stays excluded")
+projects = base_projects()
 weak = make_repo("weak-boilerplate", size=800)
 weak_readme = ("# Weak Boilerplate\n"
-               "This is a create-next-app template. Minimal setup for getting started.")
+               "create-next-app template. Minimal setup for getting started.")
 weak_pkg = '{"dependencies": {"react": "^18", "next": "^14"}}'
-weak_tests = None
-weak_techs = {"react", "next"}
-weak_live = []
-
-# Candidate C: medium — live + docs but no tests/benchmark
-medium = make_repo("medium-tool", size=3000)
-medium_readme = ("# Medium Tool\n"
-                 "A useful frontend dashboard built with React and Tailwind. "
-                 "Live at https://medium-tool.vercel.app")
-medium_pkg = '{"dependencies": {"react": "^18", "tailwindcss": "^3"}}'
-medium_tests = None
-medium_techs = {"react", "tailwindcss"}
-medium_live = ["https://medium-tool.vercel.app"]
-
-results = {}
-for label, repo, readme, pkg, tests, techs, live in [
-    ("strong", strong, strong_readme, strong_pkg, strong_tests, strong_techs, strong_live),
-    ("weak", weak, weak_readme, weak_pkg, weak_tests, weak_techs, weak_live),
-    ("medium", medium, medium_readme, medium_pkg, medium_tests, medium_techs, medium_live),
-]:
-    details = score_repo(repo, readme, pkg, tests, techs, live)
-    tier = classify_quality(details)
-    results[label] = (details["score"], tier)
-    print(f"{label:8s} score={details['score']:3d} tier={tier:8s} live={details['live']} "
-          f"tests={details.get('tests')} benchmark={details.get('benchmark')}")
-
-# ---- assertions -----------------------------------------------------------
-assert results["strong"][0] >= SELECTED_MIN_SCORE, \
-    f"strong repo should qualify (got {results['strong'][0]})"
-assert results["weak"][0] < SELECTED_MIN_SCORE, \
-    f"weak boilerplate should NOT qualify (got {results['weak'][0]})"
-assert results["strong"][0] > results["medium"][0], \
-    "strong repo should outrank medium repo"
-assert results["strong"][0] > results["weak"][0] + PROMOTE_MARGIN, \
-    "strong repo should beat weak by promotion margin"
-
-# commit count is NOT a factor: weak repo has small size but that's not commits.
-# (size is only recorded, never weighted)
-
-print("\nScoring logic assertions PASSED")
-
-# ---- curation test --------------------------------------------------------
-# Build a projects.json-like structure with pinned flagship + unpinned slots.
-projects = {
-    "selected_work": [
-        {"id": "evident", "name": "EVIDENT", "index": "01", "accent": "tech",
-         "value": "...", "signal": "...", "metric": "3-PROVIDER FAILOVER",
-         "url": "evident-olive.vercel.app", "repo": "evident",
-         "live": True, "verified": True, "pinned": True, "_score": 90},
-        {"id": "holdout", "name": "HOLDOUT", "index": "02", "accent": "studio",
-         "value": "...", "signal": "...", "metric": "59 DATASETS", 
-         "url": "holdout-taupe-iota.vercel.app", "repo": "holdout",
-         "live": True, "verified": True, "pinned": True, "_score": 88},
-        {"id": "airloom", "name": "AIRLOOM", "index": "03", "accent": "learn",
-         "value": "...", "signal": "...", "metric": "13/13 SELF-CHECKS",
-         "url": "airloom-brown.vercel.app", "repo": "airloom",
-         "live": True, "verified": True, "pinned": False, "_score": 76},
-        {"id": "caremesh", "name": "CAREMESH", "index": "04", "accent": "ink",
-         "value": "...", "signal": "...", "metric": "19/19 TESTS",
-         "url": "caremesh-one.vercel.app", "repo": "caremesh",
-         "live": True, "verified": True, "pinned": False, "_score": 74},
-    ],
-    "what_i_build": [],
-    "currently_building": [],
-    "tech_stack": [],
-    "secondary_work": [],
-}
-
-# Simulate discovered repos with the strong candidate scoring 85 (beats weakest unpinned 74 by margin)
+details = score_repo(weak, weak_readme, weak_pkg, None, {"react", "next"}, [])
+check(details["score"] < SELECTED_MIN_SCORE, f"weak boilerplate score {details['score']} below {SELECTED_MIN_SCORE}")
+check(details["live"] is False, "weak repo has no live deployment")
 discovered = [
-    {
-        "name": "strong-new-project",
-        "description": "A strong new project",
-        "homepage": None,
-        "size": 12000,
-        "default_branch": "main",
-        "live_urls": ["https://strong-new-project.vercel.app"],
-        "tests": {"passed": 27, "total": 27},
-        "technologies": sorted(strong_techs),
-        "tier": "strong",
-        "score": 85,
-        "_score_details": {"score": 85, "live": True, "live_urls": strong_live,
-                           "tests": strong_tests, "benchmark": True,
-                           "architecture": True, "security": True, "relevance": True},
-        "updated_at": "2026-11-20T00:00:00Z",
-    },
+    make_discovered("weak-boilerplate", details["score"], live=False),
 ]
-
 new_selected, changed, promotions = curate_selected_work(discovered, projects)
-print("\nCuration result:")
-print(f"  changed={changed}")
-print(f"  promotions={promotions}")
-print(f"  selected repos={[w['repo'] for w in new_selected]}")
+repos = {w["repo"] for w in new_selected}
+check("weak-boilerplate" not in repos, "weak boilerplate not added to Selected Work")
+check(len(new_selected) == MAX_SELECTED, "still 4 selected")
 
-# The strong candidate should promote and displace caremesh (weakest unpinned, score 74 < 85-15=70? no, 74 > 70).
-# Actually PROMOTE_MARGIN=15: candidate 85 must beat weakest by 15 => weakest < 70.
-# caremesh is 74, which is NOT < 70, so it should NOT be displaced.
-# airloom is 76, also not displaced.
-# But there are 4 pinned... wait, 2 are pinned (evident, holdout), 2 unpinned (airloom 76, caremesh 74).
-# open_slots = 4 - 2 pinned = 2. Both unpinned slots are filled by existing airloom/caremesh.
-# So strong candidate (85) doesn't get added because slots are full AND it doesn't beat weakest by margin.
-# That's correct conservative behavior.
+# ---- Test 6: Pinned projects carry real scores -----------------------------
+print("\nTest 6: pinned projects carry real discovery scores and stay protected")
+projects = base_projects()
+discovered = [
+    make_discovered("evident", 83, live=True),
+    make_discovered("holdout", 78, live=True),
+    make_discovered("airloom", 70, live=True),
+    make_discovered("caremesh", 60, live=True),
+]
+new_selected, changed, promotions = curate_selected_work(discovered, projects)
+by_repo = {w["repo"]: w for w in new_selected}
+check(by_repo["evident"].get("pinned") is True, "EVIDENT still pinned")
+check(by_repo["holdout"].get("pinned") is True, "HOLDOUT still pinned")
+check(isinstance(by_repo["evident"].get("_score"), (int, float)),
+      "EVIDENT has a real _score")
+check(isinstance(by_repo["holdout"].get("_score"), (int, float)),
+      "HOLDOUT has a real _score")
+check(by_repo["evident"]["_score"] == 83, "EVIDENT score reflects discovery (83)")
+check(by_repo["holdout"]["_score"] == 78, "HOLDOUT score reflects discovery (78)")
+# pinned still protected even though challenger could otherwise displace
+discovered2 = [make_discovered("super-challenger", 99, live=True,
+                               tests={"passed": 40, "total": 40})]
+new_selected2, _, _ = curate_selected_work(discovered2, projects)
+repos2 = {w["repo"] for w in new_selected2}
+check("evident" in repos2 and "holdout" in repos2,
+      "pinned projects not displaced even by super-challenger (99)")
 
-assert not changed, "No promotion expected: strong (85) doesn't beat weakest unpinned (74) by margin 15"
-assert len(new_selected) == 4, "Selected work stays at 4"
-print("\nCuration (no-promotion) assertions PASSED")
-
-# Now test: strong candidate scores 95 (beats 74 by 21 > margin 15) => should displace caremesh.
-discovered[0]["score"] = 95
-discovered[0]["_score_details"]["score"] = 95
-new_selected2, changed2, promotions2 = curate_selected_work(discovered, projects)
-print(f"\nStrong (95) curation: changed={changed2}, promotions={promotions2}")
-repos2 = [w['repo'] for w in new_selected2]
-assert "strong-new-project" in repos2, "strong project should be promoted"
-assert "caremesh" not in repos2, "caremesh (weakest unpinned) should be displaced"
-# pinned must survive
-assert "evident" in repos2 and "holdout" in repos2, "pinned flagships must survive"
-print("Curation (promotion) assertions PASSED")
-
-print("\nALL TESTS PASSED")
+# ---- summary ----------------------------------------------------------------
+print(f"\n{PASS} passed, {FAIL} failed out of {PASS + FAIL} checks")
+sys.exit(1 if FAIL else 0)

@@ -57,23 +57,9 @@
   ],
   "selected_work": [
     {
-      "id": "evident",
-      "name": "EVIDENT",
-      "index": "01",
-      "accent": "tech",
-      "value": "Hiring evidence, not hiring scores. Claims, sources and interview answers flow through six review states; the human decides.",
-      "signal": "Three AI providers with automatic failover. Zod-validated orchestration before persistence.",
-      "metric": "3-PROVIDER FAILOVER",
-      "url": "evident-olive.vercel.app",
-      "repo": "evident",
-      "live": true,
-      "verified": true,
-      "pinned": true
-    },
-    {
       "id": "holdout",
       "name": "HOLDOUT",
-      "index": "02",
+      "index": "01",
       "accent": "studio",
       "value": "Audit the dataset before trusting the score. Holdout finds leakage, quantifies how much a validation score survives once suspicious columns are removed, verifies its own findings and returns Ship, Review or Block.",
       "signal": "Six-stage audit, eight deterministic detectors, second-path verification. No LLM verdict.",
@@ -82,7 +68,23 @@
       "repo": "holdout",
       "live": true,
       "verified": true,
-      "pinned": true
+      "pinned": true,
+      "_score": 83
+    },
+    {
+      "id": "evident",
+      "name": "EVIDENT",
+      "index": "02",
+      "accent": "tech",
+      "value": "Hiring evidence, not hiring scores. Claims, sources and interview answers flow through six review states; the human decides.",
+      "signal": "Three AI providers with automatic failover. Zod-validated orchestration before persistence.",
+      "metric": "3-PROVIDER FAILOVER",
+      "url": "evident-olive.vercel.app",
+      "repo": "evident",
+      "live": true,
+      "verified": true,
+      "pinned": true,
+      "_score": 43
     },
     {
       "id": "airloom",
@@ -96,7 +98,8 @@
       "repo": "airloom",
       "live": true,
       "verified": true,
-      "pinned": true
+      "pinned": false,
+      "_score": 73
     },
     {
       "id": "caremesh",
@@ -110,7 +113,8 @@
       "repo": "caremesh",
       "live": true,
       "verified": true,
-      "pinned": true
+      "pinned": false,
+      "_score": 63
     }
   ],
   "currently_building": [
